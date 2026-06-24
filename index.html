@@ -110,8 +110,8 @@
 
   /* =========== LAYOUT =========== */
   main{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.1rem,4vw,2.2rem)}
-  section{padding:clamp(3.4rem,8vw,6rem) 0;border-top:1px solid var(--line)}
-  section:first-of-type{border-top:0}
+  section{padding:clamp(3.4rem,8vw,6rem) 0;position:relative}
+  section:not(:first-of-type)::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--line-strong) 14%,var(--line-strong) 86%,transparent)}
   .sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.4rem;flex-wrap:wrap}
   .sec-num{font-family:var(--font-mono);color:var(--accent);font-size:.8rem;font-weight:600;letter-spacing:.1em}
   .sec-title{font-family:var(--font-display);font-weight:400;font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.05;letter-spacing:-.01em}
@@ -124,7 +124,7 @@
     font-size:clamp(3rem,11vw,8.2rem);line-height:.92;letter-spacing:-.03em;
     margin-bottom:1.4rem;
   }
-  .hero h1 .ln{display:block;overflow:hidden}
+  .hero h1 .ln{display:block;overflow:hidden;padding-bottom:.22em;margin-bottom:-.18em}
   .hero h1 em{font-style:italic;color:var(--accent)}
   .hero h1 .last{color:var(--paper)}
   .hero-role{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--paper);font-weight:500;max-width:42ch;margin-bottom:.8rem}
@@ -173,7 +173,7 @@
 
   /* =========== EXPERIENCE =========== */
   .timeline{position:relative;padding-left:clamp(1.2rem,4vw,2.2rem)}
-  .timeline::before{content:"";position:absolute;left:0;top:.4rem;bottom:.4rem;width:1px;background:linear-gradient(var(--accent),var(--line) 40%)}
+  .timeline::before{content:"";position:absolute;left:0;top:.95rem;bottom:1.4rem;width:1px;background:linear-gradient(var(--accent),var(--line) 45%)}
   .job{position:relative;padding-bottom:2.6rem}
   .job:last-child{padding-bottom:0}
   .job::before{content:"";position:absolute;left:calc(-1*clamp(1.2rem,4vw,2.2rem));top:.55rem;width:11px;height:11px;border-radius:50%;background:var(--ink);border:2px solid var(--accent);transform:translateX(-5px)}
