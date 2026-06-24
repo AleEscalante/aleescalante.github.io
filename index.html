@@ -389,7 +389,7 @@
         <a class="btn" href="https://www.credly.com/badges/3c90737e-ac57-47ea-9644-30783fd9e6ed/linked_in_profile" target="_blank" rel="noopener">Credly</a>
       </div>
       <div class="foot-bottom">
-        <span>Atiquizaya, Ahuachapán · El Salvador</span>
+        <span id="footLoc"></span>
         <span id="footNote"></span>
       </div>
     </main>
@@ -602,7 +602,8 @@ const DATA = {
   },
   foot:{
     cta:{es:'¿Construimos algo con IA? <a href="mailto:alexalante3@gmail.com">Hablemos.</a>',en:'Let’s build something with AI. <a href="mailto:alexalante3@gmail.com">Get in touch.</a>'},
-    note:{es:"© 2026 Gerardo Alejandro Escalante Orellana",en:"© 2026 Gerardo Alejandro Escalante Orellana"}
+    loc:{es:"El Salvador · Disponible en remoto",en:"El Salvador · Available remotely"},
+    note:{es:"© 2026 Alejandro Escalante",en:"© 2026 Alejandro Escalante"}
   }
 };
 
@@ -716,6 +717,7 @@ function render(){
   });
 
   document.getElementById('footCta').innerHTML = DATA.foot.cta[lang];
+  document.getElementById('footLoc').textContent = DATA.foot.loc[lang];
   document.getElementById('footNote').textContent = DATA.foot.note[lang];
 
   document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
