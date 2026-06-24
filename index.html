@@ -201,6 +201,21 @@
   .cert .ct h4{font-size:.95rem;font-weight:600;line-height:1.3}
   .cert .ct span{font-family:var(--font-mono);font-size:.72rem;color:var(--muted)}
 
+  /* =========== PROJECTS =========== */
+  .sec-note{font-family:var(--font-mono);font-size:.76rem;color:var(--muted);letter-spacing:.02em;margin:-1.4rem 0 1.8rem;max-width:60ch}
+  .sec-note::before{content:"// ";color:var(--accent)}
+  .projects{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .project{background:var(--ink-2);padding:1.6rem 1.7rem;display:grid;grid-template-columns:auto 1fr;gap:1.5rem;transition:background .25s}
+  .project:hover{background:var(--panel)}
+  .project .pidx{font-family:var(--font-mono);font-size:.82rem;color:var(--accent);padding-top:.35rem;font-weight:600}
+  .project .ptop{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.3rem 1rem;align-items:baseline;margin-bottom:.55rem}
+  .project h3{font-family:var(--font-display);font-weight:450;font-size:1.24rem;letter-spacing:-.01em}
+  .project .sector{font-family:var(--font-mono);font-size:.7rem;color:var(--accent-2);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+  .project p{color:var(--paper-dim);font-size:.94rem;line-height:1.55;margin-bottom:.95rem;max-width:72ch}
+  .project .ptags{display:flex;flex-wrap:wrap;gap:.4rem}
+  .project .ptag{font-family:var(--font-mono);font-size:.71rem;padding:.24rem .55rem;border:1px solid var(--line-strong);border-radius:6px;color:var(--muted)}
+  @media(max-width:560px){.project{grid-template-columns:1fr;gap:.55rem}.project .pidx{padding-top:0}}
+
   /* =========== LANGUAGES =========== */
   .langs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem}
   .lng{border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.5rem;background:var(--ink-2)}
@@ -251,6 +266,7 @@
         <a href="#about" data-i18n="nav.about"></a>
         <a href="#expertise" data-i18n="nav.expertise"></a>
         <a href="#experience" data-i18n="nav.experience"></a>
+        <a href="#projects" data-i18n="nav.projects"></a>
         <a href="#education" data-i18n="nav.education"></a>
         <a href="#contact" data-i18n="nav.contact"></a>
       </div>
@@ -325,10 +341,20 @@
       <div class="timeline reveal" id="timeline"></div>
     </section>
 
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="sec-head reveal">
+        <span class="sec-num">05</span>
+        <h2 class="sec-title" data-i18n="projects.title"></h2>
+      </div>
+      <p class="sec-note reveal" data-i18n="projects.note"></p>
+      <div class="projects reveal" id="projectList"></div>
+    </section>
+
     <!-- EDUCATION + CERTS -->
     <section id="education">
       <div class="sec-head reveal">
-        <span class="sec-num">05</span>
+        <span class="sec-num">06</span>
         <h2 class="sec-title" data-i18n="education.title"></h2>
       </div>
       <div class="two-col">
@@ -346,7 +372,7 @@
     <!-- LANGUAGES -->
     <section id="languages">
       <div class="sec-head reveal">
-        <span class="sec-num">06</span>
+        <span class="sec-num">07</span>
         <h2 class="sec-title" data-i18n="languages.title"></h2>
       </div>
       <div class="langs reveal" id="langList"></div>
@@ -389,6 +415,7 @@ const DATA = {
     about:{es:"Perfil",en:"About"},
     expertise:{es:"Expertise",en:"Expertise"},
     experience:{es:"Experiencia",en:"Experience"},
+    projects:{es:"Proyectos",en:"Projects"},
     education:{es:"Formación",en:"Education"},
     contact:{es:"Contacto",en:"Contact"}
   },
@@ -494,6 +521,60 @@ const DATA = {
       }
     ]
   },
+  projects:{
+    title:{es:"Proyectos destacados",en:"Selected projects"},
+    note:{es:"Trabajo de cliente descrito de forma general por confidencialidad: se indican sector y aporte técnico, sin nombres de cliente.",en:"Client work described at a high level for confidentiality: sector and technical contribution only, without client names."},
+    items:[
+      {
+        t:{es:"Plataforma conversacional de trámites",en:"Conversational platform for public procedures"},
+        sector:{es:"Sector público · GovTech",en:"Public sector · GovTech"},
+        d:{es:"Capa agéntica para modelar y digitalizar trámites con bifurcaciones, validaciones, transiciones y generación asistida de manuales y UI.",en:"Agentic layer to model and digitize procedures with branching, validations, transitions and assisted manual/UI generation."},
+        tags:["ADK","Python","Vertex AI","Cloud Run"]
+      },
+      {
+        t:{es:"Suite multi-agente para telecomunicaciones",en:"Multi-agent suite for telecom"},
+        sector:{es:"Telecomunicaciones",en:"Telecommunications"},
+        d:{es:"Sistema de varios agentes para atención y renovaciones: chatbot, extracción de datos, generación de documentos y playbooks administrables.",en:"Multi-agent system for support and renewals: chatbot, data extraction, document generation and manageable playbooks."},
+        tags:["ADK","Python","APIs","Middleware"]
+      },
+      {
+        t:{es:"Agentes de IA para defensa legal",en:"AI agents for legal defense"},
+        sector:{es:"Justicia · Sector público",en:"Justice · Public sector"},
+        d:{es:"Asistentes de IA para análisis y apoyo en defensa, con recuperación y razonamiento sobre documentación legal.",en:"AI assistants for analysis and defense support, with retrieval and reasoning over legal documentation."},
+        tags:["ADK","RAG","Gemini"]
+      },
+      {
+        t:{es:"IA para datos e investigación legal",en:"AI for legal data & research"},
+        sector:{es:"Legaltech",en:"Legaltech"},
+        d:{es:"Componentes de IA sobre una plataforma de datos legales para búsqueda, extracción y consulta asistida de información jurídica.",en:"AI components on a legal-data platform for search, extraction and assisted querying of legal information."},
+        tags:["RAG","NLP","Embeddings","Python"]
+      },
+      {
+        t:{es:"Agente de pedidos B2B",en:"B2B ordering agent"},
+        sector:{es:"Consumo masivo · Distribución",en:"Consumer goods · Distribution"},
+        d:{es:"Agente conversacional para pedidos y atención en distribución del sector de bebidas, integrado con flujos de negocio.",en:"Conversational agent for ordering and support in beverage distribution, integrated with business workflows."},
+        tags:["ADK","Python","n8n"]
+      },
+      {
+        t:{es:"Plataforma de síntesis de voz",en:"Voice synthesis platform"},
+        sector:{es:"IA generativa · Media",en:"Generative AI · Media"},
+        d:{es:"Generación de voz con arquitectura cliente/servidor, exponiendo síntesis de audio mediante una API.",en:"Voice generation with a client/server architecture, exposing audio synthesis through an API."},
+        tags:["Python","TTS","REST API"]
+      },
+      {
+        t:{es:"Conciliación bancaria inteligente",en:"Intelligent bank reconciliation"},
+        sector:{es:"Fintech · ERP",en:"Fintech · ERP"},
+        d:{es:"Matching automático entre estados bancarios y registros del ERP combinando lógica programática, modelos aritméticos y LLM; extracción de facturas con Document AI.",en:"Automated matching between bank statements and ERP records combining programmatic logic, arithmetic models and LLMs; invoice extraction with Document AI."},
+        tags:["Python","Document AI","Vertex AI"]
+      },
+      {
+        t:{es:"Sistema de recomendación conversacional",en:"Conversational recommendation system"},
+        sector:{es:"I+D · PoC",en:"R&D · PoC"},
+        d:{es:"PoC de recomendación con chatbot bayesiano y evaluación sistemática de calidad de respuestas (DeepEval).",en:"Recommendation PoC with a Bayesian chatbot and systematic response-quality evaluation (DeepEval)."},
+        tags:["Python","ADK","DeepEval"]
+      }
+    ]
+  },
   education:{
     title:{es:"Formación & certificaciones",en:"Education & certifications"},
     studies:{es:"Estudios",en:"Studies"},
@@ -583,6 +664,23 @@ function render(){
     const ul=el('ul');
     j.bullets[lang].forEach(b=>ul.appendChild(el('li',null,b)));
     d.appendChild(ul); tl.appendChild(d);
+  });
+
+  const pj=document.getElementById('projectList'); pj.innerHTML='';
+  DATA.projects.items.forEach((p,i)=>{
+    const d=el('div','project');
+    d.appendChild(el('div','pidx',String(i+1).padStart(2,'0')));
+    const body=el('div');
+    const top=el('div','ptop');
+    top.appendChild(el('h3',null,p.t[lang]));
+    top.appendChild(el('span','sector',p.sector[lang]));
+    body.appendChild(top);
+    body.appendChild(el('p',null,p.d[lang]));
+    const tg=el('div','ptags');
+    p.tags.forEach(t=>tg.appendChild(el('span','ptag',t)));
+    body.appendChild(tg);
+    d.appendChild(body);
+    pj.appendChild(d);
   });
 
   const ed=document.getElementById('eduList'); ed.innerHTML='';
