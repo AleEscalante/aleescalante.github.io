@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alejandro Escalante — AI Solutions Engineer</title>
+<meta name="description" content="Alejandro Escalante — AI Solutions Engineer · Google Cloud Professional Machine Learning Engineer. IA aplicada, sistemas agénticos y cloud." />
+<meta name="author" content="Gerardo Alejandro Escalante Orellana" />
+<meta property="og:title" content="Alejandro Escalante — AI Solutions Engineer" />
+<meta property="og:description" content="IA aplicada, sistemas agénticos, automatización y cloud. Google Cloud Professional ML Engineer." />
+<meta property="og:type" content="profile" />
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0d0b08;
+    --ink-2:#13100b;
+    --panel:#1a160f;
+    --panel-2:#211b12;
+    --line:rgba(244,237,224,.10);
+    --line-strong:rgba(244,237,224,.20);
+    --paper:#f4ecdd;
+    --paper-dim:#b9ac95;
+    --muted:#8a7e6a;
+    --accent:#ff5e33;
+    --accent-2:#f2b13c;
+    --accent-soft:rgba(255,94,51,.14);
+    --font-display:'Fraunces',Georgia,serif;
+    --font-sans:'Hanken Grotesk',system-ui,sans-serif;
+    --font-mono:'JetBrains Mono',ui-monospace,monospace;
+    --maxw:1140px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--font-sans);
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* ----- atmosphere: grid + glow + grain ----- */
+  body::before{
+    content:"";
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(60vw 60vw at 8% -10%, rgba(255,94,51,.10), transparent 60%),
+      radial-gradient(50vw 50vw at 100% 8%, rgba(242,177,60,.07), transparent 55%),
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:auto,auto,64px 64px,64px 64px;
+    background-position:0 0,0 0,-1px -1px,-1px -1px;
+    -webkit-mask-image:radial-gradient(120vw 120vh at 50% 0,#000 55%,transparent 100%);
+            mask-image:radial-gradient(120vw 120vh at 50% 0,#000 55%,transparent 100%);
+  }
+  body::after{
+    content:"";
+    position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.40;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:1}
+
+  ::selection{background:var(--accent);color:#1a0d06}
+  a{color:inherit;text-decoration:none}
+
+  /* ----- mono label ----- */
+  .mono{font-family:var(--font-mono);letter-spacing:.04em}
+  .eyebrow{
+    font-family:var(--font-mono);font-size:.72rem;font-weight:500;
+    letter-spacing:.28em;text-transform:uppercase;color:var(--accent);
+    display:inline-flex;align-items:center;gap:.6rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent)}
+
+  /* =========== HEADER =========== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:1.05rem clamp(1.1rem,4vw,2.6rem);
+    backdrop-filter:blur(9px);
+    background:linear-gradient(180deg,rgba(13,11,8,.82),rgba(13,11,8,.35) 70%,transparent);
+    transition:background .3s,border-color .3s;
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{background:rgba(13,11,8,.92);border-bottom-color:var(--line)}
+  .brand{display:flex;align-items:center;gap:.7rem;font-family:var(--font-mono);font-weight:600;font-size:.92rem;letter-spacing:.02em}
+  .monogram{
+    width:34px;height:34px;display:grid;place-items:center;border-radius:9px;
+    background:var(--accent);color:#190c06;font-family:var(--font-display);font-weight:600;font-size:1.02rem;
+    box-shadow:0 4px 18px rgba(255,94,51,.35);
+  }
+  .brand span{color:var(--paper-dim)}
+  nav{display:flex;align-items:center;gap:1.6rem}
+  .nav-links{display:flex;gap:1.55rem}
+  .nav-links a{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.04em;color:var(--paper-dim);position:relative;padding:.2rem 0;transition:color .2s}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--accent);transition:width .25s}
+  .nav-links a:hover{color:var(--paper)}
+  .nav-links a:hover::after{width:100%}
+
+  .lang{display:inline-flex;border:1px solid var(--line-strong);border-radius:999px;overflow:hidden;font-family:var(--font-mono);font-size:.74rem}
+  .lang button{background:transparent;color:var(--paper-dim);border:0;padding:.34rem .68rem;cursor:pointer;font-family:inherit;font-size:inherit;letter-spacing:.06em;transition:color .2s,background .2s}
+  .lang button.active{background:var(--accent);color:#190c06;font-weight:600}
+
+  /* =========== LAYOUT =========== */
+  main{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1.1rem,4vw,2.2rem)}
+  section{padding:clamp(3.4rem,8vw,6rem) 0;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:0}
+  .sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.4rem;flex-wrap:wrap}
+  .sec-num{font-family:var(--font-mono);color:var(--accent);font-size:.8rem;font-weight:600;letter-spacing:.1em}
+  .sec-title{font-family:var(--font-display);font-weight:400;font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.05;letter-spacing:-.01em}
+
+  /* =========== HERO =========== */
+  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:6rem;padding-bottom:3rem;border-top:0}
+  .hero .eyebrow{margin-bottom:1.5rem}
+  .hero h1{
+    font-family:var(--font-display);font-weight:340;
+    font-size:clamp(3rem,11vw,8.2rem);line-height:.92;letter-spacing:-.03em;
+    margin-bottom:1.4rem;
+  }
+  .hero h1 .ln{display:block;overflow:hidden}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero h1 .last{color:var(--paper)}
+  .hero-role{font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--paper);font-weight:500;max-width:42ch;margin-bottom:.8rem}
+  .hero-role b{color:var(--accent-2);font-weight:600}
+  .hero-sub{font-family:var(--font-mono);font-size:.82rem;color:var(--muted);letter-spacing:.04em;margin-bottom:2.3rem}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:.55rem;font-family:var(--font-mono);font-size:.8rem;letter-spacing:.04em;
+    padding:.72rem 1.15rem;border-radius:999px;border:1px solid var(--line-strong);color:var(--paper);
+    transition:transform .2s,border-color .2s,background .2s,color .2s;
+  }
+  .btn svg{width:15px;height:15px}
+  .btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#190c06;font-weight:600}
+  .btn.primary:hover{background:#ff6f48;box-shadow:0 8px 26px rgba(255,94,51,.3)}
+  .scroll-cue{margin-top:3.2rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:.7rem}
+  .scroll-cue .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.3)}}
+
+  /* =========== ABOUT =========== */
+  .about-grid{display:grid;grid-template-columns:1.55fr .9fr;gap:clamp(1.6rem,4vw,3.5rem);align-items:start}
+  .about-lead{font-family:var(--font-display);font-weight:330;font-size:clamp(1.3rem,2.6vw,1.85rem);line-height:1.4;letter-spacing:-.01em;margin-bottom:1.4rem}
+  .about-lead b{color:var(--accent)}
+  .about-body p{color:var(--paper-dim);margin-bottom:1rem;max-width:60ch}
+  .stats{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .stat{background:var(--ink-2);padding:1.2rem 1.3rem}
+  .stat .n{font-family:var(--font-display);font-size:2.3rem;line-height:1;color:var(--accent)}
+  .stat .n small{font-size:1.1rem;color:var(--accent-2)}
+  .stat .l{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-top:.5rem}
+
+  /* =========== EXPERTISE =========== */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .card{background:var(--ink-2);padding:1.7rem 1.6rem;position:relative;transition:background .25s}
+  .card:hover{background:var(--panel)}
+  .card .k{font-family:var(--font-mono);font-size:.72rem;color:var(--accent);letter-spacing:.08em;margin-bottom:.85rem;display:block}
+  .card h3{font-family:var(--font-display);font-weight:430;font-size:1.18rem;margin-bottom:.6rem;letter-spacing:-.01em}
+  .card p{font-size:.92rem;color:var(--paper-dim);line-height:1.55}
+
+  /* =========== STACK =========== */
+  .stack-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2rem}
+  .stack-group h4{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+  .stack-group h4::before{content:"";width:8px;height:8px;background:var(--accent);border-radius:2px;transform:rotate(45deg)}
+  .tags{display:flex;flex-wrap:wrap;gap:.5rem}
+  .tag{font-family:var(--font-mono);font-size:.78rem;padding:.4rem .72rem;border:1px solid var(--line-strong);border-radius:8px;color:var(--paper-dim);transition:all .2s;cursor:default}
+  .tag:hover{border-color:var(--accent);color:var(--paper);background:var(--accent-soft);transform:translateY(-2px)}
+
+  /* =========== EXPERIENCE =========== */
+  .timeline{position:relative;padding-left:clamp(1.2rem,4vw,2.2rem)}
+  .timeline::before{content:"";position:absolute;left:0;top:.4rem;bottom:.4rem;width:1px;background:linear-gradient(var(--accent),var(--line) 40%)}
+  .job{position:relative;padding-bottom:2.6rem}
+  .job:last-child{padding-bottom:0}
+  .job::before{content:"";position:absolute;left:calc(-1*clamp(1.2rem,4vw,2.2rem));top:.55rem;width:11px;height:11px;border-radius:50%;background:var(--ink);border:2px solid var(--accent);transform:translateX(-5px)}
+  .job-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.3rem 1rem;align-items:baseline;margin-bottom:.2rem}
+  .job h3{font-family:var(--font-display);font-weight:450;font-size:1.32rem;letter-spacing:-.01em}
+  .job .period{font-family:var(--font-mono);font-size:.76rem;color:var(--accent);white-space:nowrap}
+  .job .org{font-family:var(--font-mono);font-size:.82rem;color:var(--paper-dim);margin-bottom:1rem;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+  .job .org .chip{font-size:.68rem;padding:.12rem .5rem;border:1px solid var(--line-strong);border-radius:999px;color:var(--muted)}
+  .job ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+  .job li{position:relative;padding-left:1.3rem;color:var(--paper-dim);font-size:.95rem;line-height:1.55;max-width:72ch}
+  .job li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+
+  /* =========== EDUCATION + CERTS =========== */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3.2rem)}
+  .block-label{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.4rem;display:block}
+  .edu-item{padding:1.1rem 0;border-top:1px solid var(--line)}
+  .edu-item:first-of-type{border-top:0;padding-top:0}
+  .edu-item h3{font-family:var(--font-display);font-weight:450;font-size:1.12rem;margin-bottom:.2rem}
+  .edu-item .meta{font-family:var(--font-mono);font-size:.76rem;color:var(--muted)}
+  .edu-item p{font-size:.9rem;color:var(--paper-dim);margin-top:.4rem}
+  .cert-list{display:flex;flex-direction:column;gap:.7rem}
+  .cert{display:flex;gap:.85rem;align-items:flex-start;padding:.85rem 1rem;background:var(--ink-2);border:1px solid var(--line);border-radius:11px;transition:border-color .2s,transform .2s}
+  .cert:hover{border-color:var(--accent);transform:translateX(3px)}
+  .cert .badge{flex:none;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-family:var(--font-mono);font-size:.7rem;font-weight:600}
+  .cert .ct h4{font-size:.95rem;font-weight:600;line-height:1.3}
+  .cert .ct span{font-family:var(--font-mono);font-size:.72rem;color:var(--muted)}
+
+  /* =========== LANGUAGES =========== */
+  .langs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem}
+  .lng{border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.5rem;background:var(--ink-2)}
+  .lng .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1rem}
+  .lng .top h3{font-family:var(--font-display);font-weight:450;font-size:1.4rem}
+  .lng .top .lvl{font-family:var(--font-mono);font-size:.76rem;color:var(--accent-2)}
+  .bar{height:6px;border-radius:999px;background:var(--panel-2);overflow:hidden}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:999px;width:0;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+
+  /* =========== FOOTER =========== */
+  footer{border-top:1px solid var(--line);padding:clamp(3.4rem,7vw,5.5rem) 0 3rem}
+  .foot-cta{font-family:var(--font-display);font-weight:330;font-size:clamp(2rem,6vw,4.2rem);line-height:1.02;letter-spacing:-.02em;margin-bottom:1.8rem}
+  .foot-cta a{color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px;transition:color .2s}
+  .foot-cta a:hover{color:var(--accent-2)}
+  .foot-links{display:flex;flex-wrap:wrap;gap:.7rem;margin-bottom:3rem}
+  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-family:var(--font-mono);font-size:.74rem;color:var(--muted);letter-spacing:.03em}
+
+  /* =========== REVEAL ANIM =========== */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .hero h1 .ln span{display:inline-block;transform:translateY(110%);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+  .hero h1 .ln:nth-child(2) span{animation-delay:.12s}
+  @keyframes rise{to{transform:none}}
+  .hero .eyebrow,.hero-role,.hero-sub,.hero-actions,.scroll-cue{opacity:0;animation:fade .8s ease forwards}
+  .hero-role{animation-delay:.35s}.hero-sub{animation-delay:.45s}.hero-actions{animation-delay:.55s}.scroll-cue{animation-delay:.7s}
+  .hero .eyebrow{animation-delay:.15s}
+  @keyframes fade{to{opacity:1}}
+
+  @media (max-width:820px){
+    .about-grid,.two-col{grid-template-columns:1fr}
+    .nav-links{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    .hero h1 .ln span{transform:none}
+    .hero .eyebrow,.hero-role,.hero-sub,.hero-actions,.scroll-cue{opacity:1}
+  }
+  noscript .ns{display:block;max-width:var(--maxw);margin:7rem auto;padding:2rem;border:1px solid var(--line);border-radius:12px;font-family:var(--font-mono);text-align:center;color:var(--paper-dim)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header id="header">
+    <a class="brand" href="#top"><span class="monogram">A</span>Escalante<span>/CV</span></a>
+    <nav>
+      <div class="nav-links">
+        <a href="#about" data-i18n="nav.about"></a>
+        <a href="#expertise" data-i18n="nav.expertise"></a>
+        <a href="#experience" data-i18n="nav.experience"></a>
+        <a href="#education" data-i18n="nav.education"></a>
+        <a href="#contact" data-i18n="nav.contact"></a>
+      </div>
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="es" class="active">ES</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <span class="eyebrow" data-i18n="hero.eyebrow"></span>
+      <h1>
+        <span class="ln"><span>Alejandro</span></span>
+        <span class="ln"><span class="last">Escalante</span></span>
+      </h1>
+      <p class="hero-role" id="heroRole"></p>
+      <p class="hero-sub" id="heroSub"></p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#contact" id="ctaContact"></a>
+        <a class="btn" href="https://www.linkedin.com/in/alejandro-escalante9/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34V9.94H5.56v8.4h2.78zM6.95 8.7a1.61 1.61 0 1 0 0-3.22 1.61 1.61 0 0 0 0 3.22zm11.39 9.64v-4.6c0-2.45-1.31-3.59-3.06-3.59-1.41 0-2.04.78-2.39 1.32v-1.13H10.1c.04.78 0 8.4 0 8.4h2.79v-4.69c0-.25.02-.5.09-.68.2-.5.66-1.02 1.43-1.02 1.01 0 1.42.77 1.42 1.9v4.49h2.51z"/></svg>LinkedIn</a>
+        <a class="btn" href="https://www.credly.com/badges/3c90737e-ac57-47ea-9644-30783fd9e6ed/linked_in_profile" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7 22l5-2.5L17 22l-2-7.5"/></svg>Credly</a>
+        <a class="btn" href="https://github.com/AleEscalante" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 5 18.3 5.3 18.3 5.3c.7 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>GitHub</a>
+      </div>
+      <div class="scroll-cue"><span class="dot"></span><span data-i18n="hero.scroll"></span></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="sec-head reveal">
+        <span class="sec-num">01</span>
+        <h2 class="sec-title" data-i18n="about.title"></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p class="about-lead" id="aboutLead"></p>
+          <div class="about-body" id="aboutBody"></div>
+        </div>
+        <div class="stats reveal" id="stats"></div>
+      </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section id="expertise">
+      <div class="sec-head reveal">
+        <span class="sec-num">02</span>
+        <h2 class="sec-title" data-i18n="expertise.title"></h2>
+      </div>
+      <div class="cards reveal" id="cards"></div>
+    </section>
+
+    <!-- STACK -->
+    <section id="stack">
+      <div class="sec-head reveal">
+        <span class="sec-num">03</span>
+        <h2 class="sec-title" data-i18n="stack.title"></h2>
+      </div>
+      <div class="stack-groups reveal" id="stackGroups"></div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="sec-head reveal">
+        <span class="sec-num">04</span>
+        <h2 class="sec-title" data-i18n="experience.title"></h2>
+      </div>
+      <div class="timeline reveal" id="timeline"></div>
+    </section>
+
+    <!-- EDUCATION + CERTS -->
+    <section id="education">
+      <div class="sec-head reveal">
+        <span class="sec-num">05</span>
+        <h2 class="sec-title" data-i18n="education.title"></h2>
+      </div>
+      <div class="two-col">
+        <div class="reveal">
+          <span class="block-label" data-i18n="education.studies"></span>
+          <div id="eduList"></div>
+        </div>
+        <div class="reveal">
+          <span class="block-label" data-i18n="education.certs"></span>
+          <div class="cert-list" id="certList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LANGUAGES -->
+    <section id="languages">
+      <div class="sec-head reveal">
+        <span class="sec-num">06</span>
+        <h2 class="sec-title" data-i18n="languages.title"></h2>
+      </div>
+      <div class="langs reveal" id="langList"></div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <main>
+      <p class="foot-cta" id="footCta"></p>
+      <div class="foot-links">
+        <a class="btn primary" id="footEmail" href="mailto:alexalante3@gmail.com">alexalante3@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/alejandro-escalante9/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/AleEscalante" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.credly.com/badges/3c90737e-ac57-47ea-9644-30783fd9e6ed/linked_in_profile" target="_blank" rel="noopener">Credly</a>
+      </div>
+      <div class="foot-bottom">
+        <span>Atiquizaya, Ahuachapán · El Salvador</span>
+        <span id="footNote"></span>
+      </div>
+    </main>
+  </footer>
+</div>
+
+<noscript><div class="ns">Este sitio usa JavaScript para el contenido bilingüe. Por favor habilítalo. · This site uses JavaScript for bilingual content. Please enable it.</div></noscript>
+
+<script>
+/* ----------------- DATA (bilingual) ----------------- */
+const DATA = {
+  hero:{
+    eyebrow:{es:"Currículum digital",en:"Digital résumé"},
+    role:{
+      es:'<b>AI Solutions Engineer</b> · Google Cloud Professional Machine Learning Engineer. Llevo iniciativas de IA desde el discovery hasta producción.',
+      en:'<b>AI Solutions Engineer</b> · Google Cloud Professional Machine Learning Engineer. I take AI initiatives from discovery to production.'
+    },
+    sub:{es:"Ingeniero Industrial · Ingeniero de IA · El Salvador",en:"Industrial Engineer · AI Engineer · El Salvador"},
+    scroll:{es:"Desplázate para explorar",en:"Scroll to explore"},
+    cta:{es:"Contáctame",en:"Get in touch"}
+  },
+  nav:{
+    about:{es:"Perfil",en:"About"},
+    expertise:{es:"Expertise",en:"Expertise"},
+    experience:{es:"Experiencia",en:"Experience"},
+    education:{es:"Formación",en:"Education"},
+    contact:{es:"Contacto",en:"Contact"}
+  },
+  about:{
+    title:{es:"Perfil",en:"Profile"},
+    lead:{
+      es:'Ingeniero de soluciones de IA con enfoque en <b>IA aplicada, sistemas agénticos, automatización y componentes cloud</b>.',
+      en:'AI solutions engineer focused on <b>applied AI, agentic systems, automation and cloud components</b>.'
+    },
+    body:{
+      es:[
+        "Combino desarrollo técnico (Python, Node.js/TypeScript, GCP, Vertex AI, Document AI), investigación aplicada y definición conceptual de soluciones para llevar iniciativas desde discovery/PoC hasta MVP y producción.",
+        "Participo en arquitectura de componentes de IA, workshops y propuestas con clientes, y liderazgo técnico de equipos para habilitar nuevas oportunidades de negocio — con la misión de democratizar la IA para que cualquier organización tome decisiones basadas en datos."
+      ],
+      en:[
+        "I blend hands-on engineering (Python, Node.js/TypeScript, GCP, Vertex AI, Document AI), applied research and conceptual solution design to move initiatives from discovery/PoC to MVP and production.",
+        "I work on AI component architecture, client workshops and proposals, and technical team leadership to unlock new business opportunities — driven by a mission to democratize AI so any organization can make data-driven decisions."
+      ]
+    }
+  },
+  stats:[
+    {n:"2.5",suf:"+",l:{es:"Años en IA & desarrollo",en:"Years in AI & dev"}},
+    {n:"70",suf:"+",l:{es:"Credenciales & cursos",en:"Credentials & courses"}},
+    {n:"GCP",suf:"",l:{es:"Pro ML Engineer",en:"Pro ML Engineer"}}
+  ],
+  expertise:{
+    title:{es:"Áreas de expertise",en:"Areas of expertise"},
+    cards:[
+      {k:"AI",t:{es:"IA aplicada & sistemas agénticos",en:"Applied AI & agentic systems"},d:{es:"NLP, RAG, embeddings, diseño multi-agente, prompt engineering, evaluaciones y guardrails.",en:"NLP, RAG, embeddings, multi-agent design, prompt engineering, evaluations and guardrails."}},
+      {k:"ARCH",t:{es:"Arquitectura de soluciones de IA",en:"AI solution architecture"},d:{es:"Definición conceptual, discovery, componentes de IA y traducción de requerimientos a PoC/MVP.",en:"Conceptual design, discovery, AI components and translating requirements into PoC/MVP."}},
+      {k:"DATA",t:{es:"Data & Backend",en:"Data & Backend"},d:{es:"Python, ADK, Node.js/TypeScript, SQL/PLSQL, APIs, ETL, MongoDB y PostgreSQL.",en:"Python, ADK, Node.js/TypeScript, SQL/PLSQL, APIs, ETL, MongoDB and PostgreSQL."}},
+      {k:"CLOUD",t:{es:"Cloud & automatización",en:"Cloud & automation"},d:{es:"Vertex AI, Document AI, BigQuery, Cloud Run, Docker, n8n, Chatwoot y Twilio.",en:"Vertex AI, Document AI, BigQuery, Cloud Run, Docker, n8n, Chatwoot and Twilio."}},
+      {k:"LEAD",t:{es:"Liderazgo técnico",en:"Technical leadership"},d:{es:"Coordinación de equipos, seguimiento, QA, definiciones técnicas y trabajo con gerencia de desarrollo.",en:"Team coordination, tracking, QA, technical definitions and work with development management."}},
+      {k:"R&D",t:{es:"Investigación aplicada",en:"Applied research"},d:{es:"Tendencias, lectura técnica y definición de frameworks/core internos para acelerar IA y automatización.",en:"Trends, technical reading and internal framework/core design to accelerate AI and automation."}}
+    ]
+  },
+  stack:{
+    title:{es:"Stack tecnológico",en:"Tech stack"},
+    groups:[
+      {h:{es:"Lenguajes & Data",en:"Languages & Data"},items:["Python","Node.js / TypeScript","SQL / PLSQL","MongoDB","PostgreSQL","BigQuery"]},
+      {h:{es:"IA & ML",en:"AI & ML"},items:["Vertex AI","Document AI","ADK","TensorFlow","scikit-learn","Hugging Face","Gemini"]},
+      {h:{es:"Cloud & DevOps",en:"Cloud & DevOps"},items:["Google Cloud","Cloud Run","Docker","Git","JIRA"]},
+      {h:{es:"Automatización",en:"Automation"},items:["n8n","Chatwoot","Twilio / Evolution API"]}
+    ]
+  },
+  experience:{
+    title:{es:"Experiencia profesional",en:"Professional experience"},
+    jobs:[
+      {
+        role:{es:"Ingeniero de Inteligencia Artificial",en:"Artificial Intelligence Engineer"},
+        org:"Grupo Consiti",type:{es:"Jornada completa · Remoto",en:"Full-time · Remote"},
+        period:{es:"Dic 2024 — Actualidad",en:"Dec 2024 — Present"},
+        bullets:{
+          es:[
+            "Diseño y desarrollo de la capa agéntica de AgentOS, plataforma conversacional registrada ante el CNR para modelar y digitalizar trámites con bifurcaciones, validaciones, transiciones y generación asistida de manuales/UI.",
+            "Definición de arquitectura de componentes de IA y apoyo en demos/propuestas para clientes y sector gobierno, traduciendo necesidades de negocio a PoC y rutas técnicas viables.",
+            "Conciliación bancaria automática en Python combinando lógica programática, modelos aritméticos y apoyo de LLM para hacer matching entre estados bancarios y registros del ERP.",
+            "Procesamiento inteligente de facturas con Vertex AI / Document AI para extraer y estandarizar datos de múltiples formatos.",
+            "Investigación aplicada y liderazgo técnico: frameworks/patrones internos de IA, workshops y validación con equipos multidisciplinarios."
+          ],
+          en:[
+            "Design and development of the agentic layer of AgentOS, a conversational platform registered with the CNR to model and digitize procedures with branching, validations, transitions and assisted manual/UI generation.",
+            "AI component architecture and support for demos/proposals for clients and the public sector, translating business needs into PoCs and viable technical paths.",
+            "Automated bank reconciliation in Python combining programmatic logic, arithmetic models and LLM support to match bank statements against ERP records.",
+            "Intelligent invoice processing with Vertex AI / Document AI to extract and standardize data across multiple formats.",
+            "Applied research and technical leadership: internal AI frameworks/patterns, workshops and validation with cross-functional teams."
+          ]
+        }
+      },
+      {
+        role:{es:"Project Manager",en:"Project Manager"},
+        org:"Grupo Consiti",type:{es:"Jornada completa",en:"Full-time"},
+        period:{es:"May 2024 — Nov 2024",en:"May 2024 — Nov 2024"},
+        bullets:{
+          es:[
+            "Coordinación de iniciativas de monitoreo de listas negras, control de deals y facturación electrónica; seguimiento de alcance, roadmap, riesgos y stakeholders.",
+            "Definiciones técnicas e integraciones con equipos en Odoo, Spring Boot, Oracle, PL/SQL, UC4 y n8n.",
+            "Gestión ágil con Scrum y acompañamiento de QA, articulando negocio, desarrollo y operación."
+          ],
+          en:[
+            "Coordination of blacklist-monitoring, deal-control and e-invoicing initiatives; tracking scope, roadmap, risks and stakeholders.",
+            "Technical definitions and integrations with teams across Odoo, Spring Boot, Oracle, PL/SQL, UC4 and n8n.",
+            "Agile management with Scrum and QA support, bridging business, development and operations."
+          ]
+        }
+      },
+      {
+        role:{es:"Desarrollador",en:"Developer"},
+        org:"Grupo Consiti",type:{es:"Prácticas",en:"Internship"},
+        period:{es:"Dic 2023 — Abr 2024",en:"Dec 2023 — Apr 2024"},
+        bullets:{
+          es:[
+            "Desarrollo backend con Java/Spring y PL/SQL; construcción de APIs e integraciones para sistemas empresariales.",
+            "Servicios resilientes e integraciones con Docker, incluyendo una API meteorológica con estrategias de caching/cola.",
+            "Soporte a Odoo para facturación electrónica y procesos ETL con Pentaho Spoon."
+          ],
+          en:[
+            "Backend development with Java/Spring and PL/SQL; building APIs and integrations for enterprise systems.",
+            "Resilient services and integrations with Docker, including a weather API with caching/queue strategies.",
+            "Odoo support for e-invoicing and ETL processes with Pentaho Spoon."
+          ]
+        }
+      }
+    ]
+  },
+  education:{
+    title:{es:"Formación & certificaciones",en:"Education & certifications"},
+    studies:{es:"Estudios",en:"Studies"},
+    certs:{es:"Certificaciones destacadas",en:"Featured certifications"},
+    eduList:[
+      {t:{es:"Ingeniería Industrial",en:"Industrial Engineering"},m:"Universidad de El Salvador · 2016 — 2021",p:{es:"Análisis de datos, análisis de negocio y mejora de procesos.",en:"Data analysis, business analysis and process improvement."}},
+      {t:{es:"Desarrollador Backend Jr. con Java",en:"Junior Backend Developer with Java"},m:"Alura · Oracle Next Education · 2022 — 2023",p:{es:"Beca del programa Oracle Next Education (ONE).",en:"Scholarship from the Oracle Next Education (ONE) program."}}
+    ],
+    certList:[
+      {b:"GCP",t:{es:"Professional Machine Learning Engineer",en:"Professional Machine Learning Engineer"},s:"Google Cloud · 2025 — 2027"},
+      {b:"AZ",t:{es:"Azure AI Fundamentals (AI-900)",en:"Azure AI Fundamentals (AI-900)"},s:"Microsoft"},
+      {b:"PMI",t:{es:"Generative AI Overview for PMs",en:"Generative AI Overview for PMs"},s:"Project Management Institute · 2025"},
+      {b:"ML",t:{es:"MLOps Fundamentals → Fully Automated MLOps",en:"MLOps Fundamentals → Fully Automated MLOps"},s:"DataCamp"},
+      {b:"ML",t:{es:"ML Models for Production",en:"ML Models for Production"},s:"DataCamp"},
+      {b:"SCR",t:{es:"Scrum Fundamentals (SFC) & DevOps (SODFC)",en:"Scrum Fundamentals (SFC) & DevOps (SODFC)"},s:"SCRUMstudy"},
+      {b:"PY",t:{es:"Python para Ciencia de Datos",en:"Python for Data Science"},s:"A2 Capacitación"}
+    ]
+  },
+  languages:{
+    title:{es:"Idiomas",en:"Languages"},
+    list:[
+      {n:{es:"Español",en:"Spanish"},lvl:{es:"Nativo",en:"Native"},pct:100},
+      {n:{es:"Inglés",en:"English"},lvl:{es:"B2 · Profesional",en:"B2 · Professional working"},pct:75}
+    ]
+  },
+  foot:{
+    cta:{es:'¿Construimos algo con IA? <a href="mailto:alexalante3@gmail.com">Hablemos.</a>',en:'Let’s build something with AI. <a href="mailto:alexalante3@gmail.com">Get in touch.</a>'},
+    note:{es:"© 2026 Gerardo Alejandro Escalante Orellana",en:"© 2026 Gerardo Alejandro Escalante Orellana"}
+  }
+};
+
+/* ----------------- RENDER ----------------- */
+let lang = localStorage.getItem('cvlang') || 'es';
+
+function el(tag,cls,html){const e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
+
+function render(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(node=>{
+    const path = node.getAttribute('data-i18n').split('.');
+    let v = DATA; path.forEach(p=>v=v&&v[p]);
+    if(v && v[lang]!=null) node.innerHTML = v[lang];
+  });
+
+  document.getElementById('heroRole').innerHTML = DATA.hero.role[lang];
+  document.getElementById('heroSub').textContent = DATA.hero.sub[lang];
+  document.getElementById('ctaContact').textContent = DATA.hero.cta[lang];
+  document.getElementById('aboutLead').innerHTML = DATA.about.lead[lang];
+
+  const ab=document.getElementById('aboutBody'); ab.innerHTML='';
+  DATA.about.body[lang].forEach(p=>ab.appendChild(el('p',null,p)));
+
+  const st=document.getElementById('stats'); st.innerHTML='';
+  DATA.stats.forEach(s=>{
+    const d=el('div','stat');
+    d.appendChild(el('div','n',s.n+(s.suf?'<small>'+s.suf+'</small>':'')));
+    d.appendChild(el('div','l',s.l[lang]));
+    st.appendChild(d);
+  });
+
+  const cards=document.getElementById('cards'); cards.innerHTML='';
+  DATA.expertise.cards.forEach(c=>{
+    const d=el('div','card');
+    d.appendChild(el('span','k',c.k));
+    d.appendChild(el('h3',null,c.t[lang]));
+    d.appendChild(el('p',null,c.d[lang]));
+    cards.appendChild(d);
+  });
+
+  const sg=document.getElementById('stackGroups'); sg.innerHTML='';
+  DATA.stack.groups.forEach(g=>{
+    const d=el('div','stack-group');
+    d.appendChild(el('h4',null,g.h[lang]));
+    const tg=el('div','tags');
+    g.items.forEach(it=>tg.appendChild(el('span','tag',it)));
+    d.appendChild(tg); sg.appendChild(d);
+  });
+
+  const tl=document.getElementById('timeline'); tl.innerHTML='';
+  DATA.experience.jobs.forEach(j=>{
+    const d=el('div','job');
+    const top=el('div','job-top');
+    top.appendChild(el('h3',null,j.role[lang]));
+    top.appendChild(el('span','period',j.period[lang]));
+    d.appendChild(top);
+    d.appendChild(el('div','org','<strong style="color:var(--paper)">'+j.org+'</strong><span class="chip">'+j.type[lang]+'</span>'));
+    const ul=el('ul');
+    j.bullets[lang].forEach(b=>ul.appendChild(el('li',null,b)));
+    d.appendChild(ul); tl.appendChild(d);
+  });
+
+  const ed=document.getElementById('eduList'); ed.innerHTML='';
+  DATA.education.eduList.forEach(e=>{
+    const d=el('div','edu-item');
+    d.appendChild(el('h3',null,e.t[lang]));
+    d.appendChild(el('div','meta',e.m));
+    d.appendChild(el('p',null,e.p[lang]));
+    ed.appendChild(d);
+  });
+
+  const cl=document.getElementById('certList'); cl.innerHTML='';
+  DATA.education.certList.forEach(c=>{
+    const d=el('div','cert');
+    d.appendChild(el('div','badge',c.b));
+    const ct=el('div','ct');
+    ct.appendChild(el('h4',null,c.t[lang]));
+    ct.appendChild(el('span',null,c.s));
+    d.appendChild(ct); cl.appendChild(d);
+  });
+
+  const ll=document.getElementById('langList'); ll.innerHTML='';
+  DATA.languages.list.forEach(l=>{
+    const d=el('div','lng');
+    const top=el('div','top');
+    top.appendChild(el('h3',null,l.n[lang]));
+    top.appendChild(el('span','lvl',l.lvl[lang]));
+    d.appendChild(top);
+    const bar=el('div','bar'); const i=el('i'); bar.appendChild(i);
+    d.appendChild(bar);
+    d.dataset.pct=l.pct;
+    ll.appendChild(d);
+  });
+
+  document.getElementById('footCta').innerHTML = DATA.foot.cta[lang];
+  document.getElementById('footNote').textContent = DATA.foot.note[lang];
+
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+  observeAll();
+}
+
+/* ----------------- INTERACTIONS ----------------- */
+function observeAll(){
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        if(e.target.classList.contains('langs')||e.target.id==='langList'){}
+        const bars=e.target.querySelectorAll('.lng');
+        bars.forEach(b=>{const i=b.querySelector('.bar i'); if(i) i.style.width=b.dataset.pct+'%';});
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal:not(.in)').forEach(n=>io.observe(n));
+}
+
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click',()=>{lang=b.dataset.lang;localStorage.setItem('cvlang',lang);render();});
+});
+
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+
+render();
+</script>
+</body>
+</html>
